@@ -32,11 +32,13 @@ public class SortThePeople {
             boolean repetidos = false;
             for (int i = 0; i < heights.length; i++) {
                 for (int j = i + 1; j < heights.length; j++) {
-                    repetidos = true;
                     if (heights[i] == heights[j]) {
+                        repetidos = true;
                         System.out.println("ERROR se encontraron estaturas iguales");
+                        break;
                     }
                 }
+                if(repetidos == true) break;
             }
         } else {
             int caso = 1;
@@ -57,11 +59,13 @@ public class SortThePeople {
                 boolean repetidos = false;
                 for (int i = 0; i < heights.length; i++) {
                     for (int j = i + 1; j < heights.length; j++) {
-                        repetidos = true;
                         if (heights[i] == heights[j]) {
+                            repetidos = true;
                             System.out.println("ERROR se encontraron estaturas iguales");
+                            break;
                         }
                     }
+                    if(repetidos == true) break;
                 }
 
                 System.out.println("FIN CASO #" + caso + "\n");
