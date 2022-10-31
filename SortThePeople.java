@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class SortThePeople {
     public static void main(String[] args) {
-        String []names;
-        int []heights;
-        if (args.length == 0){
+        String[] names;
+        int[] heights;
+        if (args.length == 0) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Digite el tamaño del arreglo");
             int n = sc.nextInt();
@@ -17,22 +17,56 @@ public class SortThePeople {
                 names[i] = sc.next();
             }
             System.out.println("Digite el array de estaturas");
-            for (int i = 0; i < n; i++) { 
-                 heights[i] = sc.nextInt(); 
+            for (int i = 0; i < n; i++) {
+                heights[i] = sc.nextInt();
             }
-        }
-        else {
-            names = generarNombres(Integer.parseInt(args[0]));
-            heights = generarEstaturas(Integer.parseInt(args[0]));
-        }
-        for (int i = 0; i < names.length; i++) {
-            System.out.println(names[i] + "," + heights[i]);
-        }
+            for (int i = 0; i < names.length; i++) {
+                System.out.println(names[i] + "," + heights[i]);
+            }
 
-        System.out.println("\nPersonas Ordenadas por estatura(Descendentemente)");
-        String[] orden = sortPeople(names, heights);
-        for (int i = 0; i < orden.length; i++) {
-            System.out.println(orden[i]);
+            System.out.println("\nPersonas Ordenadas por estatura(Descendentemente)");
+            String[] orden = sortPeople(names, heights);
+            for (int i = 0; i < orden.length; i++) {
+                System.out.println(orden[i]);
+            }
+            boolean repetidos = false;
+            for (int i = 0; i < heights.length; i++) {
+                for (int j = i + 1; j < heights.length; j++) {
+                    repetidos = true;
+                    if (heights[i] == heights[j]) {
+                        System.out.println("ERROR se encontraron estaturas iguales");
+                    }
+                }
+            }
+        } else {
+            int caso = 1;
+            while (caso < 101) {
+                names = generarNombres(Integer.parseInt(args[0]));
+                heights = generarEstaturas(Integer.parseInt(args[0]));
+                System.out.println("CASO #" + caso);
+                for (int i = 0; i < names.length; i++) {
+                    System.out.println(names[i] + "," + heights[i]);
+                }
+
+                System.out.println("\nPersonas Ordenadas por estatura(Descendentemente)");
+                String[] orden = sortPeople(names, heights);
+                for (int i = 0; i < orden.length; i++) {
+                    System.out.println(orden[i]);
+                }
+
+                boolean repetidos = false;
+                for (int i = 0; i < heights.length; i++) {
+                    for (int j = i + 1; j < heights.length; j++) {
+                        repetidos = true;
+                        if (heights[i] == heights[j]) {
+                            System.out.println("ERROR se encontraron estaturas iguales");
+                        }
+                    }
+                }
+
+                System.out.println("FIN CASO #" + caso + "\n");
+                caso++;
+            }
         }
     }
 
